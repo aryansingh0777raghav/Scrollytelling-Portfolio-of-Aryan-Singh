@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import Navbar from "@/components/Navbar";
 import Marquee from "@/components/Marquee";
+import VoiceAssistant from "@/components/VoiceAssistant";
 import AudioPlayer, { AudioPlayerHandle } from "@/components/AudioPlayer";
 
 export default function Home() {
@@ -37,6 +38,7 @@ export default function Home() {
       <main className="w-full relative bg-[#121212]">
         <Navbar />
         <AudioPlayer ref={audioRef} />
+        <VoiceAssistant />
 
         {/* Cinematic Scrollytelling Section */}
         <div ref={containerRef} className="relative h-[500vh] w-full">

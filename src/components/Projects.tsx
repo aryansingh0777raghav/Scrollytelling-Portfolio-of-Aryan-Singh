@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 
@@ -114,6 +114,16 @@ const projects = [
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("All");
+
+  useEffect(() => {
+    const handleVoiceFilter = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      setActiveTab(customEvent.detail);
+    };
+
+    window.addEventListener("VOICE_FILTER_TAB", handleVoiceFilter);
+    return () => window.removeEventListener("VOICE_FILTER_TAB", handleVoiceFilter);
+  }, []);
 
   const filteredProjects = projects.filter(
     (project) => activeTab === "All" || project.category === activeTab
