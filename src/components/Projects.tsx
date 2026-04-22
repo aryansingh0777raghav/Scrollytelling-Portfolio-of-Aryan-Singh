@@ -1,4 +1,10 @@
-import { ArrowUpRight } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import ProjectCard from "./ProjectCard";
+
+const categories = ["All", "Filmmaking", "Web Dev", "AI & Python"];
 
 const projects = [
   {
@@ -6,6 +12,14 @@ const projects = [
     description: "A psychological drama short film exploring inner conflict and life-changing decisions.",
     role: "Writer, Director, Actor, Musician, Editor",
     link: "https://youtu.be/tEvYeAHmCHg",
+    category: "Filmmaking",
+    links: [
+      { name: "Full Movie", url: "https://youtu.be/tEvYeAHmCHg" },
+      { name: "Trailer", url: "https://youtu.be/R_THbZWmIGs" },
+      { name: "IMDb", url: "https://www.imdb.com/title/tt39846631" },
+      { name: "TMDB", url: "https://www.themoviedb.org/movie/1638463-the-night-of-life-before-you-think-about-it" },
+      { name: "Boxd", url: "https://boxd.it/116UE" }
+    ],
     tags: ["Filmmaking", "Psychological Drama", "Directing"],
   },
   {
@@ -13,6 +27,7 @@ const projects = [
     description: "We are building an AI-powered tool that helps users understand their Solana wallet transactions in simple, human-readable language.",
     role: "Software Engineer",
     link: "https://github.com/aryansingh0777raghav/solexplain-ai",
+    category: "AI & Python",
     tags: ["TypeScript", "AI", "Web3", "Solana"],
   },
   {
@@ -20,6 +35,7 @@ const projects = [
     description: "A desktop assistant built with Python that performs PC tasks via voice commands.",
     role: "Software Engineer",
     link: "#",
+    category: "AI & Python",
     tags: ["Python", "AI", "Automation"],
   },
   {
@@ -27,6 +43,7 @@ const projects = [
     description: "Interactive terminal-style portfolio.",
     role: "Developer",
     link: "https://aryansingh0777raghav.github.io/Aryan-Interactive-portfolio/",
+    category: "Web Dev",
     tags: ["Web", "Terminal", "Interactive"],
   },
   {
@@ -34,6 +51,7 @@ const projects = [
     description: "Download YouTube videos, audio, and thumbnails.",
     role: "Developer",
     link: "https://github.com/aryansingh0777raghav/ArTools-Chrome-Youtube-Extension",
+    category: "Web Dev",
     tags: ["JavaScript", "Chrome Extension", "API"],
   },
   {
@@ -41,6 +59,7 @@ const projects = [
     description: "A 3D Concept Portfolio project showcasing creative frontend capabilities.",
     role: "Developer",
     link: "https://github.com/aryansingh0777raghav/3D-Concept-Portfolio-project",
+    category: "Web Dev",
     tags: ["HTML", "3D", "Portfolio"],
   },
   {
@@ -48,6 +67,7 @@ const projects = [
     description: "A clean personal portfolio built with NetUI.",
     role: "Developer",
     link: "https://github.com/aryansingh0777raghav/Personal-Portfolio-NetUI",
+    category: "Web Dev",
     tags: ["HTML", "Web Design", "UI"],
   },
   {
@@ -55,6 +75,7 @@ const projects = [
     description: "A clean, minimal, and fast personal portfolio website with a focus on simplicity and performance.",
     role: "Developer & Designer",
     link: "https://aryansingh0777raghav.github.io/Personal-Portfolio-MinimalV3/",
+    category: "Web Dev",
     tags: ["HTML", "CSS", "Minimalism"],
   },
   {
@@ -62,6 +83,7 @@ const projects = [
     description: "A sleek and performance-driven portfolio, designed with minimalism at its core.",
     role: "Developer",
     link: "https://aryansingh0777raghav.github.io/Aryan-Singh-Cine-Portfolio/",
+    category: "Web Dev",
     tags: ["UI/UX", "Web Design", "Performance"],
   },
   {
@@ -69,6 +91,7 @@ const projects = [
     description: "A website saver which saves your website and gives features to search also.",
     role: "Developer",
     link: "https://aryansingh0777raghav.github.io/MySites/",
+    category: "Web Dev",
     tags: ["Web App", "Utility", "Storage"],
   },
   {
@@ -76,6 +99,7 @@ const projects = [
     description: "A project repository for Certilink.",
     role: "Developer",
     link: "https://github.com/aryansingh0777raghav/certilink",
+    category: "Web Dev",
     tags: ["JavaScript", "Web"],
   },
   {
@@ -83,58 +107,59 @@ const projects = [
     description: "A functional chess game built for the web.",
     role: "Developer",
     link: "https://github.com/aryansingh0777raghav/Chess-Game",
+    category: "Web Dev",
     tags: ["HTML", "Game", "Logic"],
   },
 ];
 
 export default function Projects() {
+  const [activeTab, setActiveTab] = useState("All");
+
+  const filteredProjects = projects.filter(
+    (project) => activeTab === "All" || project.category === activeTab
+  );
+
   return (
-    <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto w-full text-white">
-      <div className="mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Selected Work</h2>
-        <p className="text-gray-400 text-lg max-w-2xl">
-          A collection of my latest projects across software engineering, artificial intelligence, and filmmaking.
-        </p>
-      </div>
+    <section id="projects" className="py-32 px-6 md:px-12 max-w-7xl mx-auto w-full text-white scroll-mt-12">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8"
+      >
+        <div>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Selected Work</h2>
+          <p className="text-gray-400 text-lg max-w-2xl">
+            A collection of my latest projects across software engineering, artificial intelligence, and filmmaking.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project, idx) => (
-          <a
-            key={idx}
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative flex flex-col justify-between p-8 rounded-2xl bg-white/[0.03] border border-white/[0.05] hover:bg-white/[0.08] hover:border-white/[0.1] transition-all duration-300 backdrop-blur-md overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 p-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-              <ArrowUpRight className="w-6 h-6 text-white" />
-            </div>
-            
-            <div>
-              <h3 className="text-2xl font-semibold mb-3 pr-8">{project.title}</h3>
-              <p className="text-gray-400 text-sm mb-6 line-clamp-3">
-                {project.description}
-              </p>
-            </div>
+        <div className="flex flex-wrap gap-2">
+          {categories.map((cat) => (
+            <button
+              suppressHydrationWarning={true}
+              key={cat}
+              onClick={() => setActiveTab(cat)}
+              className={`px-4 py-2 rounded-full text-sm tracking-wider uppercase transition-all duration-300 ${
+                activeTab === cat 
+                  ? "bg-white text-black font-semibold" 
+                  : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </motion.div>
 
-            <div>
-              <p className="text-indigo-400 text-sm font-medium mb-4">
-                {project.role}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag, tIdx) => (
-                  <span
-                    key={tIdx}
-                    className="text-xs px-3 py-1 rounded-full bg-white/10 text-gray-300"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <AnimatePresence mode="popLayout">
+          {filteredProjects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </section>
   );
 }

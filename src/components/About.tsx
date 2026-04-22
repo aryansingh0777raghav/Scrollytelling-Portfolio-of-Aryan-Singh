@@ -1,10 +1,20 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function About() {
   return (
-    <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto w-full text-white border-t border-white/10">
+    <section id="about" className="py-32 px-6 md:px-12 max-w-7xl mx-auto w-full text-white border-t border-white/10 scroll-mt-12">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
         
         {/* Left Column: Intro */}
-        <div className="lg:col-span-5">
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-5"
+        >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">About Me</h2>
           <p className="text-gray-400 text-lg leading-relaxed mb-6">
             Hi, I'm Aryan Singh! With a foundational background in Biology, I bring a unique perspective to technology, combining analytical skills with creativity. My journey from the sciences to tech has strengthened my adaptability and problem-solving abilities, focused entirely on developing practical digital solutions.
@@ -26,10 +36,16 @@ export default function About() {
               <p className="text-xs text-gray-400 mt-1">2022 - 2023</p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Column: Details */}
-        <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-12">
+        <motion.div 
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-12"
+        >
           
           {/* Experience */}
           <div>
@@ -82,7 +98,7 @@ export default function About() {
             
           </div>
 
-        </div>
+        </motion.div>
       </div>
     </section>
   );

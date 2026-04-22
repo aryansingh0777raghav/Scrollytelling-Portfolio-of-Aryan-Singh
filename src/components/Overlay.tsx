@@ -7,21 +7,21 @@ interface OverlayProps {
 }
 
 export default function Overlay({ scrollYProgress }: OverlayProps) {
-  // Section 1: 0% to 20%
-  const opacity1 = useTransform(scrollYProgress, [0, 0.1, 0.2, 0.3], [1, 1, 0, 0]);
-  const y1 = useTransform(scrollYProgress, [0, 0.2], [0, -100]);
+  // Section 1: 0% to 20% (visible), 20% to 25% (fade out)
+  const opacity1 = useTransform(scrollYProgress, [0, 0.2, 0.25, 1], [1, 1, 0, 0]);
+  const y1 = useTransform(scrollYProgress, [0, 0.25], [0, -100]);
 
-  // Section 2: 30% to 50%
-  const opacity2 = useTransform(scrollYProgress, [0.2, 0.3, 0.4, 0.5], [0, 1, 1, 0]);
-  const y2 = useTransform(scrollYProgress, [0.2, 0.5], [100, -100]);
+  // Section 2: 25% to 30% (fade in), 30% to 50% (visible), 50% to 55% (fade out)
+  const opacity2 = useTransform(scrollYProgress, [0, 0.25, 0.3, 0.5, 0.55, 1], [0, 0, 1, 1, 0, 0]);
+  const y2 = useTransform(scrollYProgress, [0.25, 0.55], [100, -100]);
 
-  // Section 3: 60% to 80%
-  const opacity3 = useTransform(scrollYProgress, [0.5, 0.6, 0.7, 0.8], [0, 1, 1, 0]);
-  const y3 = useTransform(scrollYProgress, [0.5, 0.8], [100, -100]);
+  // Section 3: 55% to 60% (fade in), 60% to 80% (visible), 80% to 85% (fade out)
+  const opacity3 = useTransform(scrollYProgress, [0, 0.55, 0.6, 0.8, 0.85, 1], [0, 0, 1, 1, 0, 0]);
+  const y3 = useTransform(scrollYProgress, [0.55, 0.85], [100, -100]);
 
-  // Section 4 (Hero Fade): 80% to 100%
-  const opacity4 = useTransform(scrollYProgress, [0.8, 0.9, 1], [0, 1, 1]);
-  const y4 = useTransform(scrollYProgress, [0.8, 1], [100, 0]);
+  // Section 4 (Hero Fade): 85% to 90% (fade in), 90% to 100% (visible)
+  const opacity4 = useTransform(scrollYProgress, [0, 0.85, 0.9, 1], [0, 0, 1, 1]);
+  const y4 = useTransform(scrollYProgress, [0.85, 1], [100, 0]);
 
   return (
     <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center pointer-events-none px-6">

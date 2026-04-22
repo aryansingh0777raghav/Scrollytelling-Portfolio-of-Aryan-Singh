@@ -1,6 +1,6 @@
-import { Film, Mail } from "lucide-react";
+import { Mail, Clapperboard, Ticket } from "lucide-react";
 // @ts-ignore
-import { FaInstagram, FaYoutube, FaGithub, FaLinkedin, FaImdb } from "react-icons/fa";
+import { FaInstagram, FaYoutube, FaGithub, FaLinkedin, FaImdb, FaFilm } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -16,23 +16,32 @@ export default function Footer() {
         </div>
 
         {/* Right Side: Social Links */}
-        <div className="flex gap-4">
-          <a href="https://www.instagram.com/iam_aryannnn07" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white">
+        <div className="flex flex-wrap justify-center gap-4">
+          <a href="https://www.instagram.com/iam_aryannnn07" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white" title="Instagram">
             <FaInstagram className="w-5 h-5" />
           </a>
-          <a href="https://www.youtube.com/@cineonstudio7" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white">
+          <a href="https://www.youtube.com/@cineonstudio7" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white" title="YouTube">
             <FaYoutube className="w-5 h-5" />
           </a>
-          <a href="https://github.com/aryansingh0777raghav" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white">
+          <a href="https://github.com/aryansingh0777raghav" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white" title="GitHub">
             <FaGithub className="w-5 h-5" />
           </a>
-          <a href="https://www.linkedin.com/in/iamaryan07" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white">
+          <a href="https://www.linkedin.com/in/iamaryan07" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white" title="LinkedIn">
             <FaLinkedin className="w-5 h-5" />
           </a>
           <a href="https://www.imdb.com/name/nm18214429" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white" title="IMDb">
             <FaImdb className="w-5 h-5" />
           </a>
-          <a href="mailto:aryansingh979211@gmail.com" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white">
+          <a href="https://www.themoviedb.org/person/6018661-aryan-singh" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white" title="TMDB">
+            <FaFilm className="w-5 h-5" />
+          </a>
+          <a href="https://boxd.it/2VQn1" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white" title="Letterboxd">
+            <Clapperboard className="w-5 h-5" />
+          </a>
+          <a href="https://filmfreeway.com/iamaryannnn07" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white" title="FilmFreeway">
+            <Ticket className="w-5 h-5" />
+          </a>
+          <a href="mailto:aryansingh979211@gmail.com" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white" title="Email">
             <Mail className="w-5 h-5" />
           </a>
         </div>
