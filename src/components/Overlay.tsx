@@ -31,10 +31,10 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
         style={{ opacity: opacity1, y: y1 }}
         className="absolute inset-0 flex flex-col items-center justify-center text-center"
       >
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-white drop-shadow-lg">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-white" style={{ textShadow: "0 2px 15px rgba(0,0,0,0.8)" }}>
           Aryan Singh
         </h1>
-        <p className="text-xl md:text-2xl text-gray-300 font-medium max-w-lg drop-shadow-md">
+        <p className="text-xl md:text-2xl text-gray-300 font-medium max-w-lg" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.8)" }}>
           Software Engineer, AI Enthusiast & Filmmaker.
         </p>
       </motion.div>
@@ -44,10 +44,10 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
         style={{ opacity: opacity2, y: y2 }}
         className="absolute inset-0 flex flex-col items-start justify-center max-w-6xl mx-auto px-6 md:px-12 w-full"
       >
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg">
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white" style={{ textShadow: "0 2px 15px rgba(0,0,0,0.8)" }}>
           I build <span className="text-indigo-400">digital experiences.</span>
         </h2>
-        <p className="text-lg md:text-xl text-gray-300 mt-4 max-w-md drop-shadow-md">
+        <p className="text-lg md:text-xl text-gray-300 mt-4 max-w-md" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.8)" }}>
           From fast, minimal web applications to intelligent AI tools.
         </p>
       </motion.div>
@@ -57,11 +57,11 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
         style={{ opacity: opacity3, y: y3 }}
         className="absolute inset-0 flex flex-col items-end justify-center text-right max-w-6xl mx-auto px-6 md:px-12 w-full"
       >
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg">
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white" style={{ textShadow: "0 2px 15px rgba(0,0,0,0.8)" }}>
           Bridging design and <br className="hidden md:block"/>
           <span className="text-rose-400">engineering.</span>
         </h2>
-        <p className="text-lg md:text-xl text-gray-300 mt-4 max-w-md drop-shadow-md">
+        <p className="text-lg md:text-xl text-gray-300 mt-4 max-w-md" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.8)" }}>
           A unique blend of logical problem solving and creative storytelling.
         </p>
       </motion.div>
@@ -71,7 +71,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
         style={{ opacity: opacity4, y: y4 }}
         className="absolute inset-0 flex flex-col items-center justify-center text-center max-w-6xl mx-auto px-6 md:px-12 w-full"
       >
-        <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-white drop-shadow-lg mb-8">
+        <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-8" style={{ textShadow: "0 2px 15px rgba(0,0,0,0.8)" }}>
           Explore My Work
         </h2>
         <div className="w-[1px] h-24 bg-gradient-to-b from-white/50 to-transparent"></div>

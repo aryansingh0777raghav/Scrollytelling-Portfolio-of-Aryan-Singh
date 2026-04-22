@@ -68,12 +68,17 @@ export default function ScrollyCanvas({ scrollYProgress }: ScrollyCanvasProps) {
     );
   };
 
+  const lastIndexRef = useRef(-1);
+
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const index = Math.min(
       FRAME_COUNT - 1,
       Math.floor(latest * FRAME_COUNT)
     );
-    renderFrame(index);
+    if (index !== lastIndexRef.current) {
+      renderFrame(index);
+      lastIndexRef.current = index;
+    }
   });
 
   // Initial render when loaded & handle resize
@@ -84,6 +89,7 @@ export default function ScrollyCanvas({ scrollYProgress }: ScrollyCanvasProps) {
         Math.floor(scrollYProgress.get() * FRAME_COUNT)
       );
       renderFrame(initialIndex);
+      lastIndexRef.current = initialIndex;
     }
 
     const handleResize = () => {
@@ -93,6 +99,7 @@ export default function ScrollyCanvas({ scrollYProgress }: ScrollyCanvasProps) {
           Math.floor(scrollYProgress.get() * FRAME_COUNT)
         );
         renderFrame(index);
+        lastIndexRef.current = index;
       }
     };
     
@@ -104,6 +111,7 @@ export default function ScrollyCanvas({ scrollYProgress }: ScrollyCanvasProps) {
   return (
     <canvas 
       ref={canvasRef} 
+      style={{ willChange: "transform" }}
       className="absolute top-0 left-0 h-full w-full object-cover -z-10" 
     />
   );
